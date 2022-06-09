@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API </title>
+</head>
+<body>
+    <center>
+        <h2 id="text"></h2>
+        <em><h3 id="author"></h3></em>
+    </center>
+
+    <script>
+        async function fetchData(){
+            let data = await fetch("http://127.0.0.1:8080/quotes");
+            let jsonData = await data.json();
+            let rand = Math.floor(Math.random()*jsonData.length);
+
+            const text1 = document.getElementById('text').innerHTML = ' " ' +jsonData[rand].quoteText + ' " ';
+            const author1 = document.getElementById('author').innerHTML =" - " + jsonData[rand].quoteAuthor;
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
